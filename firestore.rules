@@ -1,0 +1,96 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==========================================
+    // Хелперы
+    // ==========================================
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function userRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && userRole() == 'admin';
+    }
+
+    function isTeacherOrAdmin() {
+      return isSignedIn() && (userRole() == 'teacher' || userRole() == 'admin');
+    }
+
+    // ==========================================
+    // users
+    // ==========================================
+    match /users/{userId} {
+
+      // Любой авторизованный пользователь может читать профили.
+      // Это нужно для лидерборда, публичных профилей (#user/<uid>)
+      // и кабинета преподавателя, который делает query(users).
+      allow read: if isSignedIn();
+
+      // Создание профиля — только сам пользователь и только
+      // с дефолтными полями. Запрещает регистрацию сразу как admin.
+      allow create: if isOwner(userId)
+        && request.resource.data.role == 'student'
+        && request.resource.data.xp == 0
+        && request.resource.data.level == 1
+        && request.resource.data.achievements == []
+        && request.resource.data.completedCases == [];
+
+      // Обновление:
+      //   - админ может менять всё (включая role);
+      //   - владелец — всё, кроме role.
+      // Владение xp/level/achievements/completedCases нужно
+      // для saveResult() и addDirectXP() из game.js.
+      allow update: if isAdmin()
+        || (
+          isOwner(userId)
+          && !request.resource.data.diff(resource.data).affectedKeys()
+                .hasAny(['role'])
+        );
+
+      // Удаление — только админ.
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================
+    // results
+    // ==========================================
+    match /results/{resultId} {
+
+      // Создавать может только авторизованный пользователь и только
+      // для себя. Ограничиваем допустимые значения полей.
+      allow create: if isSignedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.score is number
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 100
+        && request.resource.data.time is number
+        && request.resource.data.time >= 0
+        && request.resource.data.caseId is string
+        && request.resource.data.date is string;
+
+      // Читать: владелец, преподаватель, админ.
+      allow read: if isSignedIn()
+        && (resource.data.userId == request.auth.uid || isTeacherOrAdmin());
+
+      // Журнал попыток не редактируется. Только админ.
+      allow update, delete: if isAdmin();
+    }
+
+    // ==========================================
+    // Всё остальное закрыто по умолчанию
+    // ==========================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

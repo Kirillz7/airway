@@ -1,0 +1,6 @@
+@media print {
+  body { background: #fff; }
+  .app-header, .actions, .btn, .debrief-actions, .disclaimer { display: none !important; }
+  .screen { padding: 0; }
+  .card, .debrief-hero, .history-item { box-shadow: none; border: 1px solid #ccc; }
+}

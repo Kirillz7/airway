@@ -1,0 +1,100 @@
+:root {
+  --red: #D62839;
+  --red-dark: #A11D2B;
+  --graphite: #1B1B1E;
+  --ink: #1B1B1E;
+  --muted: #6B6B72;
+  --bg: #F5F6F7;
+  --surface: #FFFFFF;
+  --green: #2A9D8F;
+  --amber: #F4A261;
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+  --font: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d62839' fill-opacity='0.09'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: 60px 60px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================================
+   ПЕРЕМЕННЫЕ ТЁМНОЙ ТЕМЫ
+   ========================================= */
+[data-theme="dark"] {
+  --bg: #121212;
+  --surface: #1E1E1E;
+  --graphite: #F5F5F5;
+  --ink: #F5F5F5;
+  --muted: #A0A0A0;
+  --shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+
+[data-theme="dark"] body {
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+#app { 
+  width: 100%;
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 20px 24px; 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+h1, h2, h3 { margin: 0 0 8px; line-height: 1.2; }
+p { margin: 0 0 12px; }
+button { font: inherit; cursor: pointer; }
+.screen { animation: fadeIn .25s ease; }
+.section-title { font-size: 18px; margin: 24px 0 12px; }
+.disclaimer { font-size: 12px; color: var(--muted); text-align: center; margin-top: 24px; }
+
+/* =========================================
+   ТЁМНАЯ ТЕМА: формы и таблицы
+   ========================================= */
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+  border-color: #333 !important;
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: var(--muted) !important;
+}
+html[data-theme="dark"] table thead tr {
+  background: #2A2A2E !important;
+}
+html[data-theme="dark"] table th,
+html[data-theme="dark"] table td {
+  color: var(--ink) !important;
+  border-color: #333 !important;
+}
+html[data-theme="dark"] hr,
+html[data-theme="dark"] .divider {
+  border-color: #333 !important;
+}
+html[data-theme="dark"] .fb-text,
+html[data-theme="dark"] .debrief-text,
+html[data-theme="dark"] .hint-modal p {
+  color: #DDD !important;
+}

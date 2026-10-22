@@ -1,0 +1,15 @@
+{
+  "name": "AIRWAY — Симулятор первой помощи",
+  "short_name": "AIRWAY",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F5F6F7",
+  "theme_color": "#D62839",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚑</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}

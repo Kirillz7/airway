@@ -1,0 +1,61 @@
+/* Header */
+.app-header { display: flex; align-items: center; gap: 12px; padding: 8px 0 16px; margin-bottom: 8px; border-bottom: 1px solid #E6E6EA; }
+.header-logo { font-weight: 800; letter-spacing: .08em; color: var(--red); font-size: 14px; }
+.btn-icon { width: 40px; height: 40px; border-radius: 12px; border: 1px solid #E6E6EA; background: var(--surface); font-size: 18px; display: grid; place-items: center; flex-shrink: 0; }
+.header-titles { flex: 1; min-width: 0; }
+.header-title { font-size: 17px; font-weight: 700; margin: 0; }
+.header-sub { font-size: 12px; color: var(--muted); margin: 0; }
+.header-timer { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 14px; color: var(--graphite); background: #EEF0F2; padding: 6px 10px; border-radius: 10px; }
+.header-spacer { width: 40px; }
+
+/* Buttons */
+.btn { border: none; border-radius: 14px; padding: 14px 18px; font-weight: 700; font-size: 15px; transition: transform .12s ease, background .2s ease, box-shadow .2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn:active { transform: scale(.98); }
+.btn.primary { background: var(--red); color: #fff; box-shadow: 0 6px 16px rgba(214,40,57,.25); }
+.btn.primary:hover { background: var(--red-dark); }
+.btn.ghost { background: var(--surface); color: var(--graphite); border: 1px solid #E1E3E8; }
+.btn.ghost:hover { background: #F0F1F4; }
+.btn-block { width: 100%; }
+.actions { display: grid; gap: 10px; margin-top: 20px; }
+
+/* Case list */
+.case-list { display: grid; gap: 12px; }
+.case-card { display: flex; align-items: center; gap: 14px; text-align: left; background: var(--surface); border: 1px solid #ECECF0; border-radius: 16px; padding: 14px 16px; transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease; }
+.case-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: #DADCE2; }
+.case-icon { font-size: 28px; width: 48px; height: 48px; display: grid; place-items: center; background: #FDECEE; border-radius: 14px; flex-shrink: 0; }
+.case-body { flex: 1; min-width: 0; }
+.case-title { font-size: 15px; margin: 0 0 2px; }
+.case-sub { font-size: 12px; color: var(--muted); margin: 0 0 4px; }
+.case-diff { font-size: 11px; color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin: 0; }
+.case-status { font-size: 18px; color: var(--green); font-weight: 700; }
+
+/* Options */
+.options { display: grid; gap: 10px; }
+.option { display: flex; align-items: flex-start; gap: 12px; text-align: left; background: var(--surface); border: 1px solid #E6E8EE; border-radius: 14px; padding: 14px 16px; transition: border-color .2s ease, background .2s ease; }
+.option:hover { border-color: var(--red); background: #FFF8F8; }
+.option-key { width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0; background: #F0F1F5; display: grid; place-items: center; font-weight: 800; font-size: 13px; color: var(--graphite); }
+.option-text { font-size: 14px; line-height: 1.45; }
+
+/* Modal */
+body.modal-open { overflow: hidden; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(20,20,25,.5); display: grid; place-items: center; padding: 16px; z-index: 50; animation: fadeIn .2s ease; }
+.modal { background: var(--surface); border-radius: 20px; padding: 24px; max-width: 440px; width: 100%; animation: popIn .25s ease; }
+.feedback { text-align: center; }
+.fb-icon { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-size: 28px; font-weight: 800; margin: 0 auto 12px; color: #fff; }
+.fb-ok .fb-icon { background: var(--green); }
+.fb-warn .fb-icon { background: var(--amber); }
+.fb-bad .fb-icon { background: var(--red); }
+.fb-title { font-size: 18px; margin-bottom: 8px; }
+.fb-text { font-size: 14px; color: #444; margin-bottom: 20px; }
+
+/* Progress */
+.progress-bar { height: 6px; background: #E6E8EE; border-radius: 999px; overflow: hidden; margin: 4px 0 12px; }
+.progress-fill { height: 100%; background: var(--red); border-radius: 999px; transition: width .3s ease; }
+.score-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 12px; }
+
+/* Ring */
+.ring-inner { position: relative; width: 120px; height: 120px; display: grid; place-items: center; flex-shrink: 0; }
+.ring-inner svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: #E6E8EE; stroke-width: 10; }
+.ring-fg { fill: none; stroke: var(--red); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+.ring-value { font-size: 30px; font-weight: 800; color: var(--graphite); z-index: 1; }

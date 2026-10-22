@@ -1,0 +1,287 @@
+/* =========================================
+   Home Screen (Базовые стили)
+   ========================================= */
+.home { 
+  position: relative; 
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh;
+  background: transparent; 
+}
+
+.desktop-grid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px; 
+}
+
+.col-left, .col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Hero */
+.hero { text-align: center; padding: 20px 0 10px; }
+.ecg { width: 100%; max-width: 320px; height: 70px; color: var(--red); margin: 0 auto 8px; display: block; }
+.ecg-path { stroke-dasharray: 800; stroke-dashoffset: 800; animation: drawEcg 2s ease forwards; }
+.hero-title { font-size: 42px; letter-spacing: .06em; font-weight: 900; color: var(--graphite); margin: 0; }
+.hero-sub { color: var(--muted); font-size: 14px; max-width: 360px; margin: 8px auto 12px; }
+
+/* Прогресс-бар */
+.progress-label { font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.05em; margin: 0 0 6px; text-transform: uppercase; }
+.progress-segments { display: flex; gap: 8px; justify-content: center; margin-top: 4px; }
+.segment { width: 36px; height: 6px; border-radius: 3px; background: #E6E6EA; transition: background 0.4s ease; }
+.segment.active { background: var(--red); box-shadow: 0 0 8px rgba(214, 40, 57, 0.4); }
+
+/* Карточки */
+.nav-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nav-card { 
+  background: var(--surface); border: 1px solid #ECECF0; border-radius: 16px; 
+  padding: 20px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+  gap: 6px; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; cursor: pointer; outline: none;
+}
+.nav-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #DADCE2; }
+.nav-card-icon { font-size: 36px; line-height: 1; margin-bottom: 4px; }
+.nav-card-title { font-size: 14px; font-weight: 700; color: var(--graphite); line-height: 1.3; }
+.nav-card-sub { font-size: 11px; color: var(--muted); font-weight: 500; }
+
+/* Факты */
+.fact-block { 
+  background: #FFF8F8; border-left: 4px solid var(--red); border-radius: 12px; 
+  padding: 16px; text-align: left; box-shadow: 0 4px 12px rgba(214, 40, 57, 0.05); 
+}
+.fact-title { font-size: 12px; font-weight: 800; color: var(--red); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 4px; }
+.fact-text { font-size: 13px; color: #333; margin: 0; line-height: 1.45; }
+
+/* Как это работает */
+.how-it-works { text-align: center; }
+.how-title { font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 12px; }
+.how-steps { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.how-step { 
+  background: var(--surface); border: 1px solid #ECECF0; border-radius: 12px; 
+  padding: 14px 8px; font-size: 12px; font-weight: 600; color: #333; 
+  display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; flex: 1;
+}
+.how-step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 800; }
+.how-arrow { font-size: 20px; color: var(--muted); font-weight: bold; flex-shrink: 0; margin-bottom: 20px; }
+
+/* Сценарии */
+.preview-section { text-align: center; }
+.preview-header { font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 12px; }
+.preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.preview-card { 
+  background: var(--surface); border: 1px solid #ECECF0; border-radius: 12px; 
+  padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: transform 0.2s, border-color 0.2s; cursor: pointer; outline: none;
+}
+.preview-card:hover { transform: translateY(-2px); border-color: var(--red); }
+.preview-icon { font-size: 24px; }
+.preview-title { font-size: 12px; font-weight: 700; color: var(--graphite); }
+
+/* Номера */
+.emergency-block { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.emergency-item { 
+  background: var(--graphite); border-radius: 12px; padding: 16px; 
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.emergency-num { font-size: 28px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: 0.05em; }
+.emergency-text { font-size: 11px; color: #A1A1AA; font-weight: 500; }
+
+/* Футер */
+.app-footer { 
+  margin-top: auto; 
+  padding-top: 40px; 
+  padding-bottom: 20px;
+  text-align: center; 
+  position: relative;
+  z-index: 1;
+}
+.app-footer p { font-size: 11px; color: var(--muted); margin: 0; line-height: 1.4; }
+
+/* =========================================
+   ДЕСКТОПНАЯ ВЕРСИЯ (2 колонки на главной)
+   ========================================= */
+@media (min-width: 900px) {
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-content: start;
+    margin-top: 20px;
+  }
+  
+  .col-left .hero { text-align: left; padding-top: 0; }
+  .col-left .ecg { margin: 0 0 12px 0; }
+  .col-left .hero-sub { margin: 0 0 16px 0; }
+  .col-left .progress-segments { justify-content: flex-start; }
+  
+  .col-right { gap: 20px; }
+  
+  .how-it-works { margin-top: 20px; text-align: left; }
+  .how-it-works .how-title { margin-bottom: 16px; }
+  .how-it-works .how-steps { flex-direction: column; align-items: stretch; gap: 8px; }
+  .how-it-works .how-step { flex-direction: row; justify-content: flex-start; padding: 16px; text-align: left; font-size: 14px; }
+  .how-it-works .how-arrow { transform: rotate(90deg); margin: 0 auto; display: block; text-align: center; width: 100%; }
+  
+  .nav-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* =========================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ (до 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  .how-steps { flex-direction: column; gap: 4px; }
+  .how-step { width: 100%; padding: 12px; flex-direction: row; justify-content: center; }
+  .how-arrow { transform: rotate(90deg); margin: 4px 0; }
+  .preview-grid { grid-template-columns: repeat(3, 1fr); }
+  .emergency-block { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 380px) {
+  .preview-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* =========================================
+   Остальные экраны (Briefing, Sim, etc.)
+   ========================================= */
+.briefing-card { background: var(--surface); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); text-align: center; }
+.scene-icon { font-size: 56px; margin-bottom: 12px; }
+.scene-text { font-size: 15px; color: #333; margin-bottom: 16px; }
+.rules { text-align: left; padding-left: 20px; font-size: 13px; color: var(--muted); }
+.rules li { margin-bottom: 6px; }
+.question { font-size: 19px; margin: 8px 0 16px; line-height: 1.35; }
+.hint { margin-top: 16px; font-size: 13px; padding: 10px 16px; }
+.debrief-title { font-size: 26px; margin-bottom: 20px; }
+.debrief-hero { display: flex; align-items: center; gap: 20px; background: var(--surface); padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 20px; }
+.debrief-verdict { font-size: 20px; font-weight: 800; margin: 0 0 4px; color: var(--red); }
+.debrief-text { font-size: 14px; color: #444; margin: 0 0 6px; }
+.debrief-meta { font-size: 12px; color: var(--muted); margin: 0; }
+.history { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 8px; }
+.history-item { display: flex; gap: 12px; background: var(--surface); padding: 12px 14px; border-radius: 12px; border-left: 4px solid #E6E8EE; }
+.history-item.ok { border-left-color: var(--green); }
+.history-item.warn { border-left-color: var(--amber); }
+.history-item.bad { border-left-color: var(--red); }
+.history-mark { font-weight: 800; font-size: 16px; flex-shrink: 0; width: 20px; }
+.history-q { font-size: 12px; color: var(--muted); margin: 0 0 2px; }
+.history-a { font-size: 13px; margin: 0; }
+.debrief-actions { display: grid; gap: 10px; }
+.lib-list { display: grid; gap: 8px; }
+.lib-item { background: var(--surface); border-radius: 12px; padding: 4px 16px; border: 1px solid #ECECF0; }
+.lib-item summary { padding: 12px 0; font-weight: 700; font-size: 14px; cursor: pointer; }
+.lib-item p { font-size: 14px; color: #444; padding-bottom: 12px; margin: 0; }
+.about-body { background: var(--surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.about-body p { font-size: 14px; color: #333; }
+.hint-modal h3 { margin-bottom: 8px; }
+.hint-modal p { font-size: 14px; color: #444; margin-bottom: 16px; }
+
+/* =========================================
+   Модалка с видео
+   ========================================= */
+.video-modal { width: 100%; }
+.video-container {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* =========================================
+   ЖЕСТКИЙ ФИКС ДЛЯ ТЁМНОЙ ТЕМЫ
+   ========================================= */
+html[data-theme="dark"] .nav-card,
+html[data-theme="dark"] .preview-card,
+html[data-theme="dark"] .briefing-card,
+html[data-theme="dark"] .debrief-hero,
+html[data-theme="dark"] .history-item,
+html[data-theme="dark"] .modal,
+html[data-theme="dark"] .option,
+html[data-theme="dark"] .lib-item,
+html[data-theme="dark"] .about-body,
+html[data-theme="dark"] .how-step,
+html[data-theme="dark"] .btn.ghost {
+  background: var(--surface) !important;
+  border-color: #333 !important;
+}
+
+html[data-theme="dark"] .option-text,
+html[data-theme="dark"] .question,
+html[data-theme="dark"] .history-a,
+html[data-theme="dark"] .about-body p,
+html[data-theme="dark"] .how-step span,
+html[data-theme="dark"] .lib-item p,
+html[data-theme="dark"] .btn.ghost,
+html[data-theme="dark"] .option-key {
+  color: #F5F5F5 !important;
+}
+
+html[data-theme="dark"] .option-key { background: #333 !important; }
+html[data-theme="dark"] .option:hover { background: #2A2A2E !important; border-color: var(--red) !important; }
+
+html[data-theme="dark"] .fact-block { background: rgba(214, 40, 57, 0.1) !important; }
+html[data-theme="dark"] .fact-text, html[data-theme="dark"] .scene-text { color: #DDD !important; }
+
+html[data-theme="dark"] .segment { background: #333 !important; }
+html[data-theme="dark"] .segment.active { background: var(--red) !important; }
+
+html[data-theme="dark"] .emergency-item { background: #2A2A2E !important; }
+html[data-theme="dark"] .emergency-text { color: #A1A1AA !important; }
+
+/* =========================================
+   ФИКС ТЁМНОЙ ТЕМЫ ДЛЯ HEADER
+   ========================================= */
+html[data-theme="dark"] .btn-icon {
+  background: #2A2A2E !important;
+  border-color: #333 !important;
+  color: #F5F5F5 !important;
+}
+
+html[data-theme="dark"] .header-timer {
+  background: #2A2A2E !important;
+  color: #F5F5F5 !important;
+}
+
+html[data-theme="dark"] .header-title {
+  color: #F5F5F5 !important;
+}
+
+html[data-theme="dark"] .header-sub {
+  color: #A0A0A0 !important;
+}
+
+/* ФИКС ДЛЯ КНОПОК В ШАПКЕ */
+html[data-theme="dark"] .btn-icon {
+  background: #2A2A2E !important;
+  border-color: #333 !important;
+  color: #F5F5F5 !important;
+}
+html[data-theme="dark"] .header-timer {
+  background: #2A2A2E !important;
+  color: #F5F5F5 !important;
+}
+html[data-theme="dark"] .header-title {
+  color: #F5F5F5 !important;
+}
+html[data-theme="dark"] .header-sub {
+  color: #A0A0A0 !important;
+}
+
+/* ФИКС ТЕКСТА В СПИСКЕ КЕЙСОВ */
+html[data-theme="dark"] .case-card {
+  background: var(--surface) !important;
+  border-color: #333 !important;
+}
+html[data-theme="dark"] .case-title {
+  color: #F5F5F5 !important;
+}
+html[data-theme="dark"] .case-sub {
+  color: #A0A0A0 !important;
+}
+html[data-theme="dark"] .case-status {
+  color: var(--green) !important;
+}
